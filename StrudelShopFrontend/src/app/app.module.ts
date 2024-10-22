@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AppComponent  // Import the root app component
+    AppComponent
   ],
   bootstrap: [AppComponent]
 })

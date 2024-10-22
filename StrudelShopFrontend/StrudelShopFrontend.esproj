@@ -9,7 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\components\catalog-item\" />
-    <Folder Include="src\app\pages\" />
     <Folder Include="src\assets\images\" />
   </ItemGroup>
 </Project>

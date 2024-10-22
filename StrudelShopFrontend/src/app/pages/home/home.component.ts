@@ -7,14 +7,7 @@ import { ConnectComponent } from '../../components/connect/connect.component';
 
 @Component({
   selector: 'app-home',
-  template: `
-    <app-layout>
-      <app-hero></app-hero>
-      <app-catalog></app-catalog>
-      <app-location></app-location>
-      <app-connect></app-connect>
-    </app-layout>
-  `,
+  templateUrl: './home.component.html',
   standalone: true,
   imports: [LayoutComponent, HeroComponent, CatalogComponent, LocationComponent, ConnectComponent]
 })
