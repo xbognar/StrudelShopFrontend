@@ -19,8 +19,9 @@
             <div class="flex flex-col w-full max-md:mt-8 max-md:max-w-full">
               <div *ngFor="let product of products">
                 <app-catalog-item [imageSrc]="product.imageUrl"
-                                  [title]="product.description"
-                                  bgColor="bg-stone-500 bg-opacity-10"></app-catalog-item>
+                                  [title]="product.name"
+                                  bgColor="bg-stone-500 bg-opacity-10">
+                </app-catalog-item>
               </div>
             </div>
           </div>

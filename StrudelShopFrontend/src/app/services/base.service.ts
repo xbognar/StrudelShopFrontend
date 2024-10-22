@@ -17,13 +17,13 @@ export class BaseService {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token ? token : ''}`
+        Authorization: `Bearer ${token ? token : ''}` 
       })
     };
   }
 
   protected handleError(error: any): Observable<never> {
-    console.error('An error occurred:', error); 
+    console.error('An error occurred:', error);
     throw error;
   }
 }
