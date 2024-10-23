@@ -18,9 +18,10 @@ export class AuthService extends BaseService {
   login(): Observable<LoginResponse> {
     const body = {
       username: environment.username,
-      password: environment.password 
+      password: environment.password
     };
-    return this.http.post<LoginResponse>(`${this.apiUrl}/auth/login`, body, this.getHttpOptions())
+
+    return this.http.post<LoginResponse>(`${this.apiUrl}/auth/login`, body)
       .pipe(
         catchError(this.handleError)
       );

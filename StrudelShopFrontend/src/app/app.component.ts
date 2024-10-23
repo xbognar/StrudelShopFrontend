@@ -14,15 +14,14 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    
+
     this.authService.login().subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
         console.log('Login successful, token stored');
+        this.authService.startTokenRefresh();
       },
       error: (err) => console.error('Login failed', err)
     });
-
-    this.authService.startTokenRefresh();
   }
 }

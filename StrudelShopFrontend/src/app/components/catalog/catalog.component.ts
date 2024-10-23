@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
+import { CommonModule } from '@angular/common';
 import { CatalogItemComponent } from '../catalog-item/catalog-item.component';
 
 @Component({
@@ -25,13 +25,16 @@ export class CatalogComponent implements OnInit {
   loadProducts(): void {
     this.productService.fetchProducts().subscribe({
       next: (data) => {
-        this.products = data;
+        this.products = data.map(product => ({
+          ...product,
+          imageUrl: product.imageUrl.replace('C:\\\\Users\\\\matth\\\\JobPractice\\\\StrudelShopFrontend\\\\StrudelShopFrontend\\\\src\\\\assets\\\\images\\\\', '/assets/images/')
+        }));
         this.loading = false;
       },
       error: (err) => {
         this.error = 'Failed to load products';
         this.loading = false;
-      }
+      },
     });
   }
 }

@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class BaseService {
 
-  protected apiUrl: string = 'https://localhost:5000/api';
+  protected apiUrl: string = 'http://localhost:5000/api';
 
   constructor(protected http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class BaseService {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token ? token : ''}` 
+        Authorization: `Bearer ${token ? token : ''}`
       })
     };
   }
