@@ -1,0 +1,8 @@
+<div class="flex flex-col grow max-md:mt-8" [ngClass]="bgColor">
+  <div class="flex overflow-hidden flex-col w-full">
+    <img [src]="imageSrc" [alt]="title" class="object-cover w-full aspect-[0.8] bg-stone-100 rounded-lg" loading="lazy">
+  </div>
+  <p class="mt-2 text-sm leading-tight text-slate-500 w-full text-left max-w-[130px]">
+    {{ title }}
+  </p>
+</div>

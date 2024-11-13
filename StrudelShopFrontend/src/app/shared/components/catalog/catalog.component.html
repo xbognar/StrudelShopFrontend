@@ -1,0 +1,34 @@
+<section class="flex overflow-hidden flex-col justify-center items-center px-20 py-24 w-full bg-white max-md:px-5 max-md:max-w-full">
+  <div class="flex z-10 flex-col items-center w-full max-md:max-w-full">
+    <h2 class="text-5xl text-slate-700 font-serif mt-5 text-center">
+      Katalóg
+    </h2>
+
+    <!-- Category Navigation -->
+    <div class="flex gap-12 mt-8">
+      <button *ngFor="let category of categories; let i = index"
+              (click)="setActiveCategory(i)"
+              class="text-lg pb-2 border-b-2 transition duration-300"
+              [ngClass]="{'border-red-600': activeCategory === i}">
+        {{ category }}
+      </button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="mt-11 w-full max-md:mt-10">
+      <div class="flex gap-5 max-md:flex-col">
+        <div class="grid grid-cols-2 gap-4 w-6/12 max-md:ml-0 max-md:w-full">
+          <div *ngFor="let product of products">
+            <app-catalog-item [imageSrc]="product.imageURL"
+                              [title]="product.name"
+                              bgColor="bg-white">
+            </app-catalog-item>
+          </div>
+        </div>
+        <div class="w-6/12 max-md:w-full">
+          <img src="/assets/images/strudla_aesthetic.jpg" alt="Aesthetic Strudla" class="object-contain w-full h-auto rounded-lg shadow-lg" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
