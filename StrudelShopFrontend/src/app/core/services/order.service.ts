@@ -14,34 +14,34 @@ export class OrderService {
   constructor(private baseService: BaseService) { }
 
   getAllOrders(): Observable<Order[]> {
-    return this.baseService.get<Order[]>('/orders');
+    return this.baseService.get<Order[]>('/Order');
   }
 
   getOrderById(id: number): Observable<Order> {
-    return this.baseService.get<Order>(`/orders/${id}`);
+    return this.baseService.get<Order>(`/Order/${id}`);
   }
 
   createOrder(order: Order): Observable<Order> {
-    return this.baseService.post<Order>('/orders', order);
+    return this.baseService.post<Order>('/Order', order);
   }
 
   updateOrder(id: number, order: Order): Observable<Order> {
-    return this.baseService.put<Order>(`/orders/${id}`, order);
+    return this.baseService.put<Order>(`/Order/${id}`, order);
   }
 
   deleteOrder(id: number): Observable<void> {
-    return this.baseService.delete<void>(`/orders/${id}`);
+    return this.baseService.delete<void>(`/Order/${id}`);
   }
 
   getOrderHistory(userId: number): Observable<OrderHistory[]> {
-    return this.baseService.get<OrderHistory[]>(`/orders/history/${userId}`);
+    return this.baseService.get<OrderHistory[]>(`/Order/history/${userId}`);
   }
 
   getOrderDetails(id: number): Observable<OrderDetails> {
-    return this.baseService.get<OrderDetails>(`/orders/details/${id}`);
+    return this.baseService.get<OrderDetails>(`/Order/details/${id}`);
   }
 
   getOrderSummary(): Observable<CustomerOrderSummary[]> {
-    return this.baseService.get<CustomerOrderSummary[]>('/orders/summary');
+    return this.baseService.get<CustomerOrderSummary[]>('/Order/summary');
   }
 }

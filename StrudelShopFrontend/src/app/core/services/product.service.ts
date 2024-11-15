@@ -14,30 +14,30 @@ export class ProductService {
   constructor(private baseService: BaseService) { }
 
   getAllProducts(): Observable<Product[]> {
-    return this.baseService.get<Product[]>('/products');
+    return this.baseService.get<Product[]>('/Product');
   }
 
   getProductById(id: number): Observable<Product> {
-    return this.baseService.get<Product>(`/products/${id}`);
+    return this.baseService.get<Product>(`/Product/${id}`);
   }
 
   createProduct(product: Product): Observable<Product> {
-    return this.baseService.post<Product>('/products', product);
+    return this.baseService.post<Product>('/Product', product);
   }
 
   updateProduct(id: number, product: Product): Observable<Product> {
-    return this.baseService.put<Product>(`/products/${id}`, product);
+    return this.baseService.put<Product>(`/Product/${id}`, product);
   }
 
   deleteProduct(id: number): Observable<void> {
-    return this.baseService.delete<void>(`/products/${id}`);
+    return this.baseService.delete<void>(`/Product/${id}`);
   }
 
   getTopSellingProducts(): Observable<TopSellingProduct[]> {
-    return this.baseService.get<TopSellingProduct[]>('/products/top-selling');
+    return this.baseService.get<TopSellingProduct[]>('/Product/top-selling');
   }
 
   getProductOverview(): Observable<ProductOverview[]> {
-    return this.baseService.get<ProductOverview[]>('/products/overview');
+    return this.baseService.get<ProductOverview[]>('/Product/overview');
   }
 }
