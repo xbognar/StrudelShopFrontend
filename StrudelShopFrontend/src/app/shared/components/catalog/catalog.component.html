@@ -21,7 +21,8 @@
           <div *ngFor="let product of products">
             <app-catalog-item [imageSrc]="product.imageURL || (product.productImages?.[0]?.imageURL || '')"
                               [title]="product.name"
-                              bgColor="bg-white">
+                              bgColor="bg-white"
+                              (itemClick)="navigateToProductDetail(product.productID)">
             </app-catalog-item>
           </div>
         </div>

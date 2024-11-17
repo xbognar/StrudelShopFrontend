@@ -1,5 +1,12 @@
-<app-header></app-header>
+<ng-container *ngIf="isHomePage; else standardHeader">
+  <app-header-home></app-header-home>
+</ng-container>
+<ng-template #standardHeader>
+  <app-header-standard></app-header-standard>
+</ng-template>
+
 <main>
   <ng-content></ng-content>
 </main>
+
 <app-footer></app-footer>

@@ -1,0 +1,27 @@
+<section class="my-12 px-10">
+  <h2 class="text-3xl font-semibold text-center mb-8">Mohlo by sa vám páčiť</h2>
+
+  <div class="relative">
+    <!-- Left Arrow Button -->
+    <button (click)="scrollLeft()" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center">
+      &#8249;
+    </button>
+
+    <!-- Recommended Products Carousel -->
+    <div class="flex overflow-x-scroll space-x-4 scrollbar-hide px-10" #scrollContainer>
+      <div *ngFor="let product of recommendedProducts" class="min-w-[200px] w-64 bg-white rounded-lg shadow-lg overflow-hidden flex-shrink-0">
+        <img [src]="product.imageURL" [alt]="product.name" class="w-full h-48 object-cover">
+
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-800">{{ product.name }}</h3>
+          <p class="text-gray-500">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Arrow Button -->
+    <button (click)="scrollRight()" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 rounded-full w-8 h-8 flex items-center justify-center">
+      &#8250;
+    </button>
+  </div>
+</section>

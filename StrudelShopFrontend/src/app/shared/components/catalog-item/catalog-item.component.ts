@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,4 +12,9 @@ export class CatalogItemComponent {
   @Input() imageSrc!: string;
   @Input() title!: string;
   @Input() bgColor: string = 'bg-stone-500 bg-opacity-10';
+  @Output() itemClick = new EventEmitter<void>();
+
+  onItemClicked(): void {
+    this.itemClick.emit();
+  }
 }

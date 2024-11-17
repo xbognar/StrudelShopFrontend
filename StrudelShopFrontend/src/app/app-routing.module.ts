@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -15,7 +14,8 @@ import { UsersComponent } from './pages/admin/users/users.component';
 import { AuthGuard } from './core/auth/auth.guard';
 import { RoleGuard } from './core/auth/role.guard';
 
-const routes: Routes = [
+
+export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -33,11 +33,6 @@ const routes: Routes = [
       { path: 'users', component: UsersComponent, canActivate: [RoleGuard], data: { role: 'Admin' } },
     ]
   },
-  { path: '**', redirectTo: '' } // Wildcard route for a 404 page
+  { path: '**', redirectTo: '' }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }

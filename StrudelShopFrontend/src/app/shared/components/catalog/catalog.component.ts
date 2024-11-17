@@ -3,6 +3,7 @@ import { ProductService } from '../../../core/services/product.service';
 import { Product } from '../../../core/models/product.model';
 import { CommonModule } from '@angular/common';
 import { CatalogItemComponent } from '../catalog-item/catalog-item.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -18,7 +19,7 @@ export class CatalogComponent implements OnInit {
   categories: string[] = ['Najpopulárnejšie', 'Všetky', 'Náš typ', 'Novinky'];
   activeCategory: number = 0;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadProducts();
@@ -39,5 +40,9 @@ export class CatalogComponent implements OnInit {
 
   setActiveCategory(index: number): void {
     this.activeCategory = index;
+  }
+
+  navigateToProductDetail(productId: number): void {
+    this.router.navigate(['/product', productId]);
   }
 }

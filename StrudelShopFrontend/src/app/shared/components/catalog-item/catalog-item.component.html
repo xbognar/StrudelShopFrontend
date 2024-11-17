@@ -1,4 +1,4 @@
-<div class="flex flex-col grow max-md:mt-8" [ngClass]="bgColor">
+<div class="flex flex-col grow max-md:mt-8 cursor-pointer" (click)="onItemClicked()" [ngClass]="bgColor">
   <div class="flex overflow-hidden flex-col w-full">
     <img [src]="imageSrc" [alt]="title" class="object-cover w-full aspect-[0.8] bg-stone-100 rounded-lg" loading="lazy">
   </div>

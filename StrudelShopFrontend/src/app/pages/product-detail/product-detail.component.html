@@ -1,1 +1,72 @@
-<p>product-detail works!</p>
+<app-header-standard></app-header-standard>
+
+<section class="px-10 py-12 bg-white">
+  <div class="container mx-auto max-w-6xl">
+    <nav class="text-gray-600 mb-6">
+      <a href="/" class="hover:text-slate-700">Domov</a> /
+      <a href="/catalog" class="hover:text-slate-700">Katalóg</a> /
+      <span class="font-semibold">{{ product?.name }}</span>
+    </nav>
+
+    <div class="grid grid-cols-5 gap-4 items-start">
+      <!-- Display only 3 images on the left side -->
+      <div class="flex flex-col gap-4 w-full">
+        <ng-container *ngFor="let image of displayedImages">
+          <img [src]="image.imageURL"
+               alt="{{ product?.name }}"
+               class="rounded-lg shadow-lg object-cover w-36 h-36 cursor-pointer"
+               (click)="showImage(image)" />
+        </ng-container>
+      </div>
+
+      <!-- Main image with carousel controls -->
+      <div class="col-span-2 relative flex items-center justify-center">
+        <button (click)="previousImage()"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-slate-700 text-white rounded-full w-8 h-8 flex items-center justify-center">
+          &#8249;
+        </button>
+        <img [src]="currentImageUrl"
+             alt="{{ product?.name }}"
+             class="rounded-lg shadow-lg object-cover w-full h-[500px]" />
+        <button (click)="nextImage()"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-slate-700 text-white rounded-full w-8 h-8 flex items-center justify-center">
+          &#8250;
+        </button>
+      </div>
+
+      <!-- Product details and Add to Cart section -->
+      <div class="col-span-2 flex flex-col justify-between gap-4">
+        <div>
+          <h2 class="text-3xl font-serif text-slate-700">{{ product?.name }}</h2>
+          <p class="mt-4 mb-4 text-base text-gray-600">{{ product?.description }}</p>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <p class="text-2xl font-semibold text-slate-800">{{ product?.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+          <div class="flex items-center gap-4">
+            <div class="flex items-center border border-gray-300 rounded-lg px-3 py-2">
+              <button (click)="decrementQuantity()" class="text-xl font-semibold px-2">-</button>
+              <span class="px-4">{{ quantity }}</span>
+              <button (click)="incrementQuantity()" class="text-xl font-semibold px-2">+</button>
+            </div>
+            <button class="px-6 py-3 text-lg font-semibold text-white bg-slate-700 rounded-lg hover:bg-slate-600 transition">
+              Pridať do košíka
+            </button>
+          </div>
+        </div>
+        <div class="mt-8 border-t pt-4 text-gray-700">
+          <h3 class="text-lg font-semibold">Podrobnosti o produkte</h3>
+          <ul class="mt-2 space-y-2 text-sm">
+            <li>Ručne vyrábané z čerstvých surovín</li>
+            <li>100% prírodné chute</li>
+            <li>Ideálna voľba ku káve alebo na oslavy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recommended Products Section -->
+<app-recommended-products [currentProductId]="product?.productID ?? 0"></app-recommended-products>
+
+<app-footer></app-footer>
