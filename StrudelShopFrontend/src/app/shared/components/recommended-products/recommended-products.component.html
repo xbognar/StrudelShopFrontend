@@ -1,5 +1,5 @@
 <section class="my-12 px-10">
-  <h2 class="text-3xl font-semibold text-center mb-8">Mohlo by sa vám páčiť</h2>
+  <h2 class="text-3xl font-serif text-slate-700 text-center mb-8">Mohlo by sa vám páčiť</h2>
 
   <div class="relative">
     <!-- Left Arrow Button -->
@@ -16,8 +16,8 @@
         <img [src]="product.imageURL" [alt]="product.name" class="w-full h-64 object-cover">
 
         <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 truncate">{{ product.name }}</h3>
-          <p class="text-lg text-gray-500">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+          <h3 class="text-xl font-serif text-slate-700 truncate">{{ product.name }}</h3>
+          <p class="text-lg font-semibold text-slate-800">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
         </div>
       </a>
     </div>
