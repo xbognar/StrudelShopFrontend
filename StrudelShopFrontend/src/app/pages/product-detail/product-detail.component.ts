@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../../app/core/services/product.service';
-import { Product } from '../../../app/core/models/product.model';
-import { CommonModule } from '@angular/common'; // Import CommonModule for pipes like currency
+import { CommonModule } from '@angular/common';
 import { HeaderStandardComponent } from '../../shared/components/header-standard/header-standard.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { RecommendedProductsComponent } from '../../shared/components/recommended-products/recommended-products.component';
+import { ProductService } from '../../../app/core/services/product.service';
+import { Product } from '../../../app/core/models/product.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,21 +13,21 @@ import { RecommendedProductsComponent } from '../../shared/components/recommende
   styleUrls: ['./product-detail.component.css'],
   standalone: true,
   imports: [
-    CommonModule, // Import CommonModule to access currency pipe
-    HeaderStandardComponent, // Import header component
-    FooterComponent, // Import footer component
-    RecommendedProductsComponent, // Import recommended products component
+    CommonModule,
+    HeaderStandardComponent,
+    FooterComponent,
+    RecommendedProductsComponent,
   ],
 })
 export class ProductDetailComponent implements OnInit {
   product: Product | undefined;
   quantity: number = 1;
-  currentImageIndex: number = 0; // Track the currently displayed image index
+  currentImageIndex: number = 0;
 
   constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit(): void {
-    const productId = this.route.snapshot.params['id'];
+    const productId = +this.route.snapshot.params['id'];
     this.loadProduct(productId);
   }
 
@@ -35,35 +35,46 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductById(productId).subscribe({
       next: (product: Product) => {
         this.product = product;
+        this.currentImageIndex = 0;
       },
       error: () => console.error('Failed to load product'),
     });
   }
 
   get displayedImages() {
-    // Display only 3 images starting from currentImageIndex
-    return this.product?.productImages?.slice(this.currentImageIndex, this.currentImageIndex + 3) || [];
+    if (!this.product?.productImages) {
+      return [];
+    }
+    // Exclude the current main image
+    return this.product.productImages.filter((_, index) => index !== this.currentImageIndex);
   }
 
   get currentImageUrl(): string | undefined {
-    // Return the URL of the currently selected image
     return this.product?.productImages?.[this.currentImageIndex]?.imageURL;
   }
 
   previousImage(): void {
-    if (this.currentImageIndex > 0) {
-      this.currentImageIndex--;
+    if (this.product?.productImages) {
+      if (this.currentImageIndex > 0) {
+        this.currentImageIndex--;
+      } else {
+        this.currentImageIndex = this.product.productImages.length - 1;
+      }
     }
   }
 
   nextImage(): void {
-    if (this.product?.productImages && this.currentImageIndex < this.product.productImages.length - 3) {
-      this.currentImageIndex++;
+    if (this.product?.productImages) {
+      if (this.currentImageIndex < this.product.productImages.length - 1) {
+        this.currentImageIndex++;
+      } else {
+        this.currentImageIndex = 0;
+      }
     }
   }
 
   showImage(image: { imageURL: string }) {
-    const index = this.product?.productImages?.findIndex(img => img.imageURL === image.imageURL);
+    const index = this.product?.productImages?.findIndex((img) => img.imageURL === image.imageURL);
     if (index !== undefined && index >= 0) {
       this.currentImageIndex = index;
     }
