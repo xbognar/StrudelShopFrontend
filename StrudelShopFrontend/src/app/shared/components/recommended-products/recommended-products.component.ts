@@ -7,7 +7,6 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-recommended-products',
   templateUrl: './recommended-products.component.html',
-  styleUrls: ['./recommended-products.component.css'],
   standalone: true,
   imports: [CommonModule, RouterLink],
 })

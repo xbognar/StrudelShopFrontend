@@ -10,7 +10,6 @@ import { Product } from '../../../app/core/models/product.model';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css'],
   standalone: true,
   imports: [
     CommonModule,
