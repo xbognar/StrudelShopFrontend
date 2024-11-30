@@ -7,6 +7,6 @@ export interface OrderItem {
   productID: number;
   quantity: number;
   price: number;
-  order?: Order; // Optional, to represent the related order
-  product?: Product; // Optional, to represent the related product
+  order?: Order; 
+  product?: Product; 
 }

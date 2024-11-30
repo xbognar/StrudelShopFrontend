@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../core/services/product.service';
-import { Product } from '../../../core/models/product.model';
+import { ProductService } from '../../core/services/product.service';
+import { Product } from '../../core/models/product.model';
 import { CommonModule } from '@angular/common';
 import { CatalogItemComponent } from '../catalog-item/catalog-item.component';
 import { Router } from '@angular/router';

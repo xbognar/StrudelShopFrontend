@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HeaderStandardComponent } from '../../shared/components/header-standard/header-standard.component';
-import { FooterComponent } from '../../shared/components/footer/footer.component';
-import { RecommendedProductsComponent } from '../../shared/components/recommended-products/recommended-products.component';
+import { HeaderStandardComponent } from '../../components/header-standard/header-standard.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { RecommendedProductsComponent } from '../../components/recommended-products/recommended-products.component';
 import { ProductService } from '../../../app/core/services/product.service';
 import { Product } from '../../../app/core/models/product.model';
 

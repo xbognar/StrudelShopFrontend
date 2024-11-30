@@ -4,5 +4,5 @@ export interface ProductImage {
   imageID: number;
   productID: number;
   imageURL: string;
-  product?: Product; // Optional, to represent the associated product
+  product?: Product;
 }

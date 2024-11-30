@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductService } from '../../../core/services/product.service';
-import { Product } from '../../../core/models/product.model';
+import { ProductService } from '../../core/services/product.service';
+import { Product } from '../../core/models/product.model';
 import { RouterLink } from '@angular/router';
 
 @Component({

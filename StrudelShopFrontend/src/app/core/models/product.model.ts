@@ -6,5 +6,5 @@ export interface Product {
   description: string;
   price: number;
   imageURL: string;
-  productImages?: ProductImage[]; // Optional, to represent additional images of the product
+  productImages?: ProductImage[];
 }

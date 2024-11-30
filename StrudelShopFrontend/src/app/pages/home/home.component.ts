@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { LayoutComponent } from '../../shared/components/layout/layout.component';
-import { HeroComponent } from '../../shared/components/hero/hero.component';
-import { CatalogComponent } from '../../shared/components/catalog/catalog.component';
-import { LocationComponent } from '../../shared/components/location/location.component';
-import { ConnectComponent } from '../../shared/components/connect/connect.component';
-import { ReviewsComponent } from '../../shared/components/reviews/reviews.component';
+import { LayoutComponent } from '../../components/layout/layout.component';
+import { HeroComponent } from '../../components/hero/hero.component';
+import { CatalogComponent } from '../../components/catalog/catalog.component';
+import { LocationComponent } from '../../components/location/location.component';
+import { ConnectComponent } from '../../components/connect/connect.component';
+import { ReviewsComponent } from '../../components/reviews/reviews.component';
 
 @Component({
   selector: 'app-home',
