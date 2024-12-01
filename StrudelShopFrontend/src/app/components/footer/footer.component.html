@@ -1,3 +1,4 @@
+
 <footer class="bg-slate-700 text-white px-6 py-12 w-full">
   <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
 
@@ -17,11 +18,11 @@
 
         <div class="flex flex-col">
           <h3 class="text-lg font-bold font-serif mb-2">Pre zákazníkov</h3>
-          <a href="#about-us" class="hover:text-gray-300 font-serif">O nás</a>
-          <a href="#catalog" class="hover:text-gray-300 font-serif">Katalóg</a>
-          <a href="#terms" class="hover:text-gray-300 font-serif">Obchodné podmienky</a>
-          <a href="#privacy" class="hover:text-gray-300 font-serif">Ochrana súkromia</a>
-          <a href="#refund" class="hover:text-gray-300 font-serif">Reklamácie</a>
+          <a [routerLink]="'/contact-about'" fragment="contact-section" class="hover:text-gray-300 font-serif">O nás</a>
+          <a [routerLink]="'/contact-about'" fragment="contact-section" class="hover:text-gray-300 font-serif">Kontakt</a>
+          <a [routerLink]="'/home'" fragment="catalog" class="hover:text-gray-300 font-serif">Katalóg</a>
+          <a [routerLink]="'/'" class="hover:text-gray-300 font-serif">Obchodné podmienky</a>
+          <a [routerLink]="'/'" class="hover:text-gray-300 font-serif">Ochrana súkromia</a>
         </div>
 
         <div class="flex flex-col">

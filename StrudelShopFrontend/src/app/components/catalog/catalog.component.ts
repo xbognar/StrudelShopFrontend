@@ -42,6 +42,7 @@ export class CatalogComponent implements OnInit {
   }
 
   navigateToProductDetail(productId: number): void {
-    this.router.navigate(['/product', productId]);
+    this.router.navigate(['/product', productId], { fragment: 'product-detail' });
   }
+
 }

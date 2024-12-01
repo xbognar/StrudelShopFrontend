@@ -1,13 +1,18 @@
 <app-header-standard></app-header-standard>
 
-<section class="px-10 py-12 bg-white">
+<!-- Kontakt Section -->
+<section id="contact-section" class="px-10 py-20 bg-white">
   <div class="container mx-auto text-center">
-    <h2 class="text-4xl font-serif text-pink-600 mb-10">Kontakt</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="flex items-center justify-center mb-16">
+      <img src="/assets/icons/vintageLeft.png" alt="Left Decoration" class="h-20 text-gray-700 mr-4 filter-blue">
+      <h2 class="text-5xl font-serif text-gray-700">Kontakt</h2>
+      <img src="/assets/icons/vintageRight.png" alt="Right Decoration" class="h-20 text-gray-700 ml-4 filter-blue">
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <!-- Call Us Section -->
       <div class="flex flex-col items-center">
         <h3 class="text-2xl font-bold text-gray-700">Zavolajte nám</h3>
-        <p class="text-xl text-pink-600 mt-3">031 / 780 75 68</p>
+        <p class="text-l text-gray-600 mt-3">+421 812 345 678</p>
         <ul class="mt-4 text-gray-600">
           <li>pon-piatok: 8:00 - 18:00</li>
         </ul>
@@ -16,8 +21,8 @@
       <!-- Write to Us Section -->
       <div class="flex flex-col items-center">
         <h3 class="text-2xl font-bold text-gray-700">Napíšte nám</h3>
-        <p class="mt-4 text-pink-600">eshop&#64;strudleshop.sk</p>
-        <p class="mt-2 text-pink-600">reklamacie&#64;strudleshop.sk</p>
+        <p class="mt-4 text-gray-600">eshop&#64;strudleshop.sk</p>
+        <p class="mt-2 text-gray-600">reklamacie&#64;strudleshop.sk</p>
       </div>
 
       <!-- Address Section -->
@@ -32,15 +37,21 @@
   </div>
 </section>
 
-<section class="px-10 py-12 bg-stone-100">
+<!-- O nás Section -->
+<section class="px-10 py-24 bg-stone-100">
   <div class="container mx-auto">
-    <h2 class="text-4xl font-serif text-pink-600 mb-10 text-center">O nás</h2>
+    <div class="flex items-center justify-center mb-16">
+      <img src="/assets/icons/vintageLeft.png" alt="Left Decoration" class="h-20 text-gray-700 mr-4 filter-blue">
+      <h2 class="text-5xl font-serif text-gray-700 text-center">O nás</h2>
+      <img src="/assets/icons/vintageRight.png" alt="Right Decoration" class="h-20 text-gray-700 ml-4 filter-blue">
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
       <!-- Left Side (Image) -->
-      <div>
-        <img src="/assets/images/strudla_grandma.jpg"
-             alt="Grandma making strudels"
-             class="rounded-lg shadow-lg object-cover w-full" />
+      <div class="relative">
+        <img src="/assets/images/onas.jpg"
+             alt="About us"
+             class="rounded-lg shadow-lg object-cover w-full">
+        <div class="absolute inset-0 bg-blue-900 bg-opacity-25 rounded-lg"></div>
       </div>
       <!-- Right Side (Text) -->
       <div class="flex flex-col justify-center">

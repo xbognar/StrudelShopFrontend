@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { HeaderStandardComponent } from '../../components/header-standard/header-standard.component';
 import { FooterComponent } from '../../components/footer/footer.component';
@@ -18,16 +19,27 @@ import { Product } from '../../../app/core/models/product.model';
     RecommendedProductsComponent,
   ],
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, AfterViewInit {
   product: Product | undefined;
   quantity: number = 1;
   currentImageIndex: number = 0;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private viewportScroller: ViewportScroller
+  ) { }
 
   ngOnInit(): void {
     const productId = +this.route.snapshot.params['id'];
     this.loadProduct(productId);
+  }
+
+  ngAfterViewInit(): void {
+    const fragment = this.route.snapshot.fragment;
+    if (fragment) {
+      this.viewportScroller.scrollToAnchor(fragment);
+    }
   }
 
   loadProduct(productId: number): void {
@@ -44,7 +56,6 @@ export class ProductDetailComponent implements OnInit {
     if (!this.product?.productImages) {
       return [];
     }
-    // Exclude the current main image
     return this.product.productImages.filter((_, index) => index !== this.currentImageIndex);
   }
 
