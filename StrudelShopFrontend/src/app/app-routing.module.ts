@@ -17,7 +17,6 @@ import { ContactAboutComponent } from './pages/contact-about/contact-about.compo
 
 import { AppGuard } from './core/auth/app.guard';
 
-
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
@@ -26,21 +25,36 @@ export const routes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'contact-about', component: ContactAboutComponent },
-  { path: 'checkout', component: CheckoutComponent, canActivate: [AppGuard] },
-  { path: 'order-history', component: OrderHistoryComponent, canActivate: [AppGuard] },
-  { path: 'order-details/:id', component: OrderDetailsComponent, canActivate: [AppGuard] },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [AppGuard],
+    data: { role: 'User' },
+  },
+  {
+    path: 'order-history',
+    component: OrderHistoryComponent,
+    canActivate: [AppGuard],
+    data: { role: 'User' },
+  },
+  {
+    path: 'order-details/:id',
+    component: OrderDetailsComponent,
+    canActivate: [AppGuard],
+    data: { role: 'User' },
+  },
   {
     path: 'admin',
-    canActivate: [AppGuard],
+    canActivateChild: [AppGuard],
     data: { role: 'Admin' },
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'users', component: UsersComponent },
-    ]
+    ],
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
@@ -53,4 +67,3 @@ export const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
-

@@ -1,5 +1,3 @@
-<div class="py-3 bg-white"></div> <!-- White space above the header -->
-
 <header class="bg-slate-700 text-white flex items-center justify-between px-8 py-2 rounded-full max-w-7xl mx-auto font-serif shadow-lg">
   <!-- Title -->
   <div class="text-lg font-bold ml-4">Domáce štrúdle</div>
@@ -10,10 +8,21 @@
     <a [routerLink]="'/contact-about'" class="hover:text-gray-300">O nás</a>
     <a [routerLink]="'/home'" fragment="catalog" class="hover:text-gray-300">Katalóg</a>
     <a [routerLink]="'/contact-about'" class="hover:text-gray-300">Kontakt</a>
+    <a *ngIf="isLoggedIn && !isAdmin" [routerLink]="'/order-history'" class="hover:text-gray-300">Moje objednávky</a>
+    <a *ngIf="isAdmin" [routerLink]="'/admin/dashboard'" class="hover:text-gray-300">Admin Dashboard</a>
   </nav>
 
-  <!-- Login Button -->
-  <button [routerLink]="'/login'" class="px-4 py-1 border border-white text-white rounded-full bg-transparent transition-colors duration-300 hover:bg-white hover:text-black mr-4">
-    Prihlásiť sa
-  </button>
+  <!-- Login/Logout Button -->
+  <div class="mr-4">
+    <button *ngIf="!isLoggedIn"
+            [routerLink]="'/login'"
+            class="px-4 py-1 border border-white text-white rounded-full bg-transparent transition-colors duration-300 hover:bg-white hover:text-black">
+      Prihlásiť sa
+    </button>
+    <button *ngIf="isLoggedIn"
+            (click)="logout()"
+            class="px-4 py-1 border border-white text-white rounded-full bg-transparent transition-colors duration-300 hover:bg-white hover:text-black">
+      Odhlásiť sa
+    </button>
+  </div>
 </header>

@@ -1,17 +1,29 @@
+<header class="bg-transparent text-white absolute top-0 left-0 w-full z-50">
 
-<header class="absolute top-0 left-0 w-full flex items-center justify-between px-10 py-6 z-30 text-base bg-transparent text-white font-serif">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-8 py-5 font-serif">
 
-  <div class="flex items-center justify-between w-full">
-    <nav class="flex gap-10 items-center">
-      <a [routerLink]="'/contact-about'" fragment="contact-section" class="hover:text-gray-300">O nás</a>
-      <a [routerLink]="'/contact-about'" fragment="contact-section" class="hover:text-gray-300">Kontakt</a>
+    <div class="text-xl font-bold">Domáce štrúdle</div>
+
+    <nav class="flex gap-6">
+      <a [routerLink]="'/home'" fragment="catalog" class="hover:text-gray-300">Katalóg</a>
+      <a [routerLink]="'/contact-about'" class="hover:text-gray-300">O nás</a>
+      <a [routerLink]="'/contact-about'" class="hover:text-gray-300">Kontakt</a>
+      <a *ngIf="isLoggedIn && !isAdmin" [routerLink]="'/order-history'" class="hover:text-gray-300">Moje objednávky</a>
+      <a *ngIf="isAdmin" [routerLink]="'/admin/dashboard'" class="hover:text-gray-300">Admin Dashboard</a>
     </nav>
-    <div class="absolute left-1/2 transform -translate-x-1/2 font-bold text-2xl tracking-wider text-center">
-      Domáce štrúdle
+
+    <div>
+      <button *ngIf="!isLoggedIn"
+              [routerLink]="'/login'"
+              class="px-4 py-1 border border-white text-white rounded-full bg-transparent transition-colors duration-300 hover:bg-white hover:text-black">
+        Prihlásiť sa
+      </button>
+      <button *ngIf="isLoggedIn"
+              (click)="logout()"
+              class="px-4 py-1 border border-white text-white rounded-full bg-transparent transition-colors duration-300 hover:bg-white hover:text-black">
+        Odhlásiť sa
+      </button>
     </div>
-    <button [routerLink]="'/login'" class="px-4 py-2 border border-white text-white bg-transparent transition-colors duration-300 hover:bg-white hover:text-black">
-      Prihlásiť sa
-    </button>
   </div>
 
 </header>
