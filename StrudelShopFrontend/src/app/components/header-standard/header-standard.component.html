@@ -3,13 +3,22 @@
   <div class="text-lg font-bold ml-4">Domáce štrúdle</div>
 
   <!-- Navigation Links -->
-  <nav class="flex gap-6">
+  <nav class="flex gap-6 items-center">
     <a [routerLink]="'/home'" class="hover:text-gray-300">Obchod</a>
     <a [routerLink]="'/contact-about'" class="hover:text-gray-300">O nás</a>
     <a [routerLink]="'/home'" fragment="catalog" class="hover:text-gray-300">Katalóg</a>
     <a [routerLink]="'/contact-about'" class="hover:text-gray-300">Kontakt</a>
     <a *ngIf="isLoggedIn && !isAdmin" [routerLink]="'/order-history'" class="hover:text-gray-300">Moje objednávky</a>
     <a *ngIf="isAdmin" [routerLink]="'/admin/dashboard'" class="hover:text-gray-300">Admin Dashboard</a>
+
+    <!-- Cart icon for normal user -->
+    <a *ngIf="isLoggedIn && !isAdmin"
+       [routerLink]="'/cart'"
+       class="flex items-center hover:text-gray-300">
+      <img src="assets/icons/cart.png"
+           alt="Cart Icon"
+           class="w-6 h-6 inline-block" />
+    </a>
   </nav>
 
   <!-- Login/Logout Button -->

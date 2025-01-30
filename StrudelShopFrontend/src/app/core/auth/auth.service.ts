@@ -6,7 +6,8 @@ import { Observable, BehaviorSubject, of } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
 import { AuthRequest } from '../models/auth-request.model';
 import { AuthResponse } from '../models/auth-response.model';
-import jwt_decode from 'jwt-decode'; // Default import
+import { User } from '../models/user.model';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  // 1) LOGIN with { username, password }
   login(credentials: AuthRequest): Observable<boolean> {
     return this.http.post<AuthResponse>('/api/authentication/login', credentials).pipe(
       tap((response: AuthResponse) => {
@@ -31,8 +33,10 @@ export class AuthService {
     );
   }
 
-  register(user: AuthRequest): Observable<boolean> {
-    return this.http.post('/api/authentication/register', user).pipe(
+  // 2) REGISTER with { username, passwordHash }
+  register(newUser: User): Observable<boolean> {
+    // Sends { "username": "...", "passwordHash": "..." } to the backend
+    return this.http.post('/api/authentication/register', newUser).pipe(
       map(() => true),
       catchError(() => of(false))
     );
@@ -50,11 +54,8 @@ export class AuthService {
 
   hasValidToken(): boolean {
     const token = this.getToken();
-    if (!token) {
-      return false;
-    }
-    const isExpired = this.isTokenExpired(token);
-    return !isExpired;
+    if (!token) return false;
+    return !this.isTokenExpired(token);
   }
 
   getToken(): string | null {
@@ -91,14 +92,11 @@ export class AuthService {
   private isTokenExpired(token: string): boolean {
     try {
       const decoded: any = jwt_decode(token);
-      const exp = decoded.exp;
-      if (exp === undefined) {
-        return false;
-      }
-      const date = new Date(0);
-      date.setUTCSeconds(exp);
-      return date < new Date();
-    } catch (error) {
+      if (!decoded.exp) return false;
+      const expiry = new Date(0);
+      expiry.setUTCSeconds(decoded.exp);
+      return expiry < new Date();
+    } catch {
       return true;
     }
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
@@ -11,18 +11,23 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, RouterModule, CommonModule],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   credentials: AuthRequest = { username: '', password: '' };
   errorMessage: string | null = null;
   returnUrl: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   onLogin() {
+    this.errorMessage = null; 
     this.authService.login(this.credentials).subscribe((success) => {
       if (success) {
         this.router.navigateByUrl(this.returnUrl!);

@@ -1,3 +1,4 @@
+// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -16,15 +17,24 @@ import { UsersComponent } from './pages/admin/users/users.component';
 import { ContactAboutComponent } from './pages/contact-about/contact-about.component';
 
 import { AppGuard } from './core/auth/app.guard';
+import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+
   { path: 'product/:id', component: ProductDetailComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'contact-about', component: ContactAboutComponent },
+
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [AppGuard],
+    data: { role: 'User' },
+  },
+
   {
     path: 'checkout',
     component: CheckoutComponent,
@@ -43,6 +53,7 @@ export const routes: Routes = [
     canActivate: [AppGuard],
     data: { role: 'User' },
   },
+
   {
     path: 'admin',
     canActivateChild: [AppGuard],
@@ -54,6 +65,10 @@ export const routes: Routes = [
       { path: 'users', component: UsersComponent },
     ],
   },
+
+  { path: 'contact-about', component: ContactAboutComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
+
   { path: '**', redirectTo: '' },
 ];
 

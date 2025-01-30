@@ -1,9 +1,13 @@
+<!-- src/app/pages/register/register.component.html -->
 <section class="flex items-center justify-center min-h-screen bg-stone-100">
   <div class="bg-white rounded-lg shadow-lg p-10 w-full max-w-lg">
-    <h2 class="text-4xl font-serif text-gray-700 text-center mb-6">Zaregistrujte sa</h2>
+    <h2 class="text-4xl font-serif text-gray-700 text-center mb-6">
+      Zaregistrujte sa
+    </h2>
     <form (ngSubmit)="onRegister()" #registerForm="ngForm" class="space-y-6">
       <div class="flex flex-col">
-        <label for="username" class="text-lg font-medium text-gray-700 mb-2">Používateľské meno</label>
+        <label for="username"
+               class="text-lg font-medium text-gray-700 mb-2">Používateľské meno</label>
         <input type="text"
                id="username"
                [(ngModel)]="newUser.username"
@@ -11,12 +15,14 @@
                required
                class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500" />
       </div>
+
       <div class="flex flex-col">
-        <label for="password" class="text-lg font-medium text-gray-700 mb-2">Heslo</label>
+        <label for="passwordHash"
+               class="text-lg font-medium text-gray-700 mb-2">Heslo</label>
         <input type="password"
-               id="password"
-               [(ngModel)]="newUser.password"
-               name="password"
+               id="passwordHash"
+               [(ngModel)]="newUser.passwordHash"
+               name="passwordHash"
                required
                class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500" />
       </div>
@@ -31,6 +37,7 @@
         Registrovať
       </button>
     </form>
+
     <p class="text-center text-gray-600 mt-6">
       Už máte účet?
       <a [routerLink]="'/login'" class="text-blue-600 hover:underline">Prihlásiť sa</a>

@@ -1,9 +1,12 @@
 <section class="flex items-center justify-center min-h-screen bg-stone-100">
   <div class="bg-white rounded-lg shadow-lg p-10 w-full max-w-md">
-    <h2 class="text-4xl font-serif text-gray-700 text-center mb-6">Prihlásiť sa</h2>
+    <h2 class="text-4xl font-serif text-gray-700 text-center mb-6">
+      Prihlásiť sa
+    </h2>
     <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="space-y-6">
       <div class="flex flex-col">
-        <label for="username" class="text-lg font-medium text-gray-700 mb-2">Používateľské meno</label>
+        <label for="username"
+               class="text-lg font-medium text-gray-700 mb-2">Používateľské meno</label>
         <input type="text"
                id="username"
                [(ngModel)]="credentials.username"
@@ -12,7 +15,8 @@
                class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-blue-500" />
       </div>
       <div class="flex flex-col">
-        <label for="password" class="text-lg font-medium text-gray-700 mb-2">Heslo</label>
+        <label for="password"
+               class="text-lg font-medium text-gray-700 mb-2">Heslo</label>
         <input type="password"
                id="password"
                [(ngModel)]="credentials.password"
