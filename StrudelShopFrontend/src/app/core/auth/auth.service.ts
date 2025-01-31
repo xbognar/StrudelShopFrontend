@@ -1,12 +1,12 @@
 // src/app/core/auth/auth.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, of } from 'rxjs';
-import { tap, catchError, map } from 'rxjs/operators';
+import { tap, catchError, map, switchMap } from 'rxjs/operators';
 import { AuthRequest } from '../models/auth-request.model';
 import { AuthResponse } from '../models/auth-response.model';
-import { User } from '../models/user.model';
+import { RegisterRequest } from '../models/register-request.model';
+import { environment } from '../../../enviroments/environment';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
@@ -22,9 +22,9 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  // 1) LOGIN with { username, password }
   login(credentials: AuthRequest): Observable<boolean> {
-    return this.http.post<AuthResponse>('/api/authentication/login', credentials).pipe(
+    // Calls /api/authentication/login -> expects JSON {token, ...}
+    return this.http.post<AuthResponse>(`${environment.baseUrl}/authentication/login`, credentials).pipe(
       tap((response: AuthResponse) => {
         this.setSession(response);
       }),
@@ -33,13 +33,19 @@ export class AuthService {
     );
   }
 
-  // 2) REGISTER with { username, passwordHash }
-  register(newUser: User): Observable<boolean> {
-    // Sends { "username": "...", "passwordHash": "..." } to the backend
-    return this.http.post('/api/authentication/register', newUser).pipe(
-      map(() => true),
-      catchError(() => of(false))
-    );
+  register(newUser: RegisterRequest): Observable<boolean> {
+    // 1) Send { username, password } to /register -> returns plain text
+    return this.http
+      .post(`${environment.baseUrl}/authentication/register`, newUser, {
+        responseType: 'text' as 'json', // returns "Registration successful"
+      })
+      .pipe(
+        switchMap(() => {
+          // 2) If register succeeded, auto-login with same credentials
+          return this.login({ username: newUser.username, password: newUser.password });
+        }),
+        catchError(() => of(false))
+      );
   }
 
   logout(): void {

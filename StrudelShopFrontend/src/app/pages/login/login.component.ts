@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
   onLogin() {
-    this.errorMessage = null; 
+    this.errorMessage = null;
     this.authService.login(this.credentials).subscribe((success) => {
       if (success) {
         this.router.navigateByUrl(this.returnUrl!);

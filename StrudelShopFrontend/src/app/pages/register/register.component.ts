@@ -1,9 +1,8 @@
-// src/app/pages/register/register.component.ts
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
-import { User } from '../../core/models/user.model'; // <--- IMPORTANT
+import { RegisterRequest } from '../../core/models/register-request.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,10 +12,9 @@ import { CommonModule } from '@angular/common';
   imports: [FormsModule, RouterModule, CommonModule],
 })
 export class RegisterComponent {
-  // Use the 'User' type here, with a 'passwordHash' property
-  newUser: User = {
+  newUser: RegisterRequest = {
     username: '',
-    passwordHash: '', // We'll store the typed password here
+    password: '',
   };
 
   errorMessage: string | null = null;
@@ -28,13 +26,12 @@ export class RegisterComponent {
 
   onRegister() {
     this.errorMessage = null;
-    // This calls AuthService.register(), sending { username, passwordHash }
+
     this.authService.register(this.newUser).subscribe(success => {
       if (success) {
-        // OK → navigate to login
-        this.router.navigate(['/login']);
+
+        this.router.navigate(['/home']);
       } else {
-        // error → show message
         this.errorMessage = 'Registration failed. Please try again.';
       }
     });
