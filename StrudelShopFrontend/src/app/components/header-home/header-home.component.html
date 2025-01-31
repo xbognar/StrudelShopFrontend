@@ -1,9 +1,8 @@
 <header class="bg-transparent text-white absolute top-0 left-0 w-full z-50">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-8 py-5 font-serif">
-    <!-- Site title -->
+    
     <div class="text-xl font-bold">Domáce štrúdle</div>
 
-    <!-- Navigation -->
     <nav class="flex gap-6 items-center">
       <a [routerLink]="'/home'" fragment="catalog" class="hover:text-gray-300">Katalóg</a>
       <a [routerLink]="'/contact-about'" class="hover:text-gray-300">O nás</a>
@@ -11,7 +10,6 @@
       <a *ngIf="isLoggedIn && !isAdmin" [routerLink]="'/order-history'" class="hover:text-gray-300">Moje objednávky</a>
       <a *ngIf="isAdmin" [routerLink]="'/admin/dashboard'" class="hover:text-gray-300">Admin Dashboard</a>
 
-      <!-- Cart icon for normal user -->
       <a *ngIf="isLoggedIn && !isAdmin"
          [routerLink]="'/cart'"
          class="relative flex items-center hover:text-gray-300">
@@ -21,7 +19,6 @@
       </a>
     </nav>
 
-    <!-- Login / Logout buttons -->
     <div>
       <button *ngIf="!isLoggedIn"
               [routerLink]="'/login'"

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -14,7 +13,6 @@ import { ProductsComponent } from './pages/admin/products/products.component';
 import { OrdersComponent } from './pages/admin/orders/orders.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { ContactAboutComponent } from './pages/contact-about/contact-about.component';
-
 import { AppGuard } from './core/auth/app.guard';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 

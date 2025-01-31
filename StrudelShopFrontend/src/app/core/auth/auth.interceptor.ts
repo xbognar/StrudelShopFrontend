@@ -16,6 +16,11 @@ import { Router } from '@angular/router';
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router) { }
 
+  /**
+   * Intercepts outgoing HTTP requests.
+   * - Adds the Authorization header with the JWT token (if available).
+   * - Handles 401 Unauthorized responses by logging out the user and redirecting to login.
+   */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;
     const token = this.authService.getToken();

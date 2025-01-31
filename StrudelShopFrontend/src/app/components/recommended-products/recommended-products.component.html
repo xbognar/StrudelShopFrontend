@@ -2,13 +2,12 @@
   <h2 class="text-3xl font-serif text-slate-700 text-center mb-8">Mohlo by sa vám páčiť</h2>
 
   <div class="relative">
-    <!-- Left Arrow Button -->
+
     <button (click)="scrollLeft()"
             class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 rounded-full w-10 h-10 flex items-center justify-center shadow-md">
       &#8249;
     </button>
 
-    <!-- Recommended Products Carousel -->
     <div class="flex overflow-hidden space-x-6 px-10" #scrollContainer>
       <a *ngFor="let product of recommendedProducts"
          [routerLink]="['/product', product.productID]"
@@ -22,10 +21,10 @@
       </a>
     </div>
 
-    <!-- Right Arrow Button -->
     <button (click)="scrollRight()"
             class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 rounded-full w-10 h-10 flex items-center justify-center shadow-md">
       &#8250;
     </button>
   </div>
+
 </section>

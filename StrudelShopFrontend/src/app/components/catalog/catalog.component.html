@@ -4,7 +4,6 @@
       Katalóg
     </h2>
 
-    <!-- Category Navigation -->
     <div class="flex gap-12 mt-8">
       <button *ngFor="let category of categories; let i = index"
               (click)="setActiveCategory(i)"
@@ -14,7 +13,6 @@
       </button>
     </div>
 
-    <!-- Products Grid -->
     <div class="mt-11 w-full max-md:mt-10">
       <div class="flex gap-5 max-md:flex-col">
         <div class="grid grid-cols-2 gap-4 w-6/12 max-md:ml-0 max-md:w-full">

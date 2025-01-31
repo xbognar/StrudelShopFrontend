@@ -9,7 +9,7 @@
     </nav>
 
     <div class="grid grid-cols-5 items-start">
-      <!-- Left Images Column -->
+
       <div class="grid grid-rows-3 gap-4 w-full p-4" style="height: 600px;">
         <ng-container *ngFor="let image of displayedImages">
           <img [src]="image.imageURL"
@@ -19,7 +19,6 @@
         </ng-container>
       </div>
 
-      <!-- Main Image with Carousel Controls -->
       <div class="col-span-2 relative flex items-center justify-center p-4" style="height: 600px;">
         <button (click)="previousImage()"
                 class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-slate-700 text-white rounded-full w-8 h-8 flex items-center justify-center z-10">
@@ -34,9 +33,7 @@
         </button>
       </div>
 
-      <!-- Product Details and Add to Cart Section -->
       <div class="col-span-2 flex flex-col justify-between gap-4 p-4" style="min-height: 500px;">
-        <!-- Product details content -->
         <div>
           <h2 class="text-3xl font-serif text-slate-700">{{ product?.name }}</h2>
           <p class="mt-4 mb-4 text-base text-gray-600">{{ product?.description }}</p>
@@ -57,7 +54,8 @@
                 +
               </button>
             </div>
-            <button class="px-6 py-3 text-lg font-semibold text-white bg-slate-700 rounded-lg hover:bg-slate-600 transition">
+            <button class="px-6 py-3 text-lg font-semibold text-white bg-slate-700 rounded-lg hover:bg-slate-600 transition"
+                    (click)="addToCart()">
               Pridať do košíka
             </button>
           </div>

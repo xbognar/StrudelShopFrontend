@@ -1,4 +1,3 @@
-// order-item.service.ts
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { OrderItem } from '../models/order-item.model';
